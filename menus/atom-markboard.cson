@@ -1,0 +1,22 @@
+# See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
+'context-menu':
+  'atom-text-editor:not([mini])': [
+    {
+      'label': 'Copy to Markdown'
+      'command': 'atom-markboard:copy'
+    }
+  ]
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'Markboard'
+      'submenu': [
+        {
+          'label': 'Copy to Markdown'
+          'command': 'atom-markboard:copy'
+        }
+      ]
+    ]
+  }
+]

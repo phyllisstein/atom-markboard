@@ -1,0 +1,27 @@
+{
+  "name": "atom-markboard",
+  "main": "./lib/atom-markboard",
+  "version": "1.0.0",
+  "description": "Copy Markdown to the OS X Clipboard as fancy formatted text.",
+  "keywords": [
+    "clipboard",
+    "markdown"
+  ],
+  "activationCommands": {
+    "atom-workspace": "atom-markboard:copy"
+  },
+  "repository": "https://github.com/phyllisstein/atom-markboard",
+  "license": "GPL-3.0",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "loophole": "^1.1.0",
+    "nodobjc": "^2.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.0.2",
+    "eslint": "^2.7.0",
+    "eslint-plugin-babel": "^3.2.0"
+  }
+}
