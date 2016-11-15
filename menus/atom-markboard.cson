@@ -3,7 +3,7 @@
   'atom-text-editor:not([mini])': [
     {
       'label': 'Copy to Markdown'
-      'command': 'atom-markboard:copy'
+      'command': 'atom-markboard:copy-to-markdown'
     }
   ]
 'menu': [
@@ -14,7 +14,7 @@
       'submenu': [
         {
           'label': 'Copy to Markdown'
-          'command': 'atom-markboard:copy'
+          'command': 'atom-markboard:copy-to-markdown'
         }
       ]
     ]

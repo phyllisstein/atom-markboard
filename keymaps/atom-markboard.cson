@@ -8,4 +8,4 @@
 # For more detailed documentation see
 # https://atom.io/docs/latest/behind-atom-keymaps-in-depth
 'atom-text-editor:not([mini])':
-  'ctrl-alt-c': 'atom-markboard:copy'
+  'ctrl-alt-c': 'atom-markboard:copy-to-markdown'
