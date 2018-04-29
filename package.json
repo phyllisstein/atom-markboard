@@ -7,9 +7,6 @@
     "clipboard",
     "markdown"
   ],
-  "activationCommands": {
-    "atom-workspace": "atom-markboard:copy-to-markdown"
-  },
   "repository": "https://github.com/phyllisstein/atom-markboard",
   "license": "GPL-3.0",
   "engines": {
@@ -17,7 +14,7 @@
   },
   "dependencies": {
     "bluebird": "^3.5.1",
-    "juice": "^4.2.2",
+    "juice": "^4.2.3",
     "loophole": "^1.1.0",
     "nodobjc": "^2.1.0"
   },
