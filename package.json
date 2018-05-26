@@ -10,15 +10,30 @@
   "repository": "https://github.com/phyllisstein/atom-markboard",
   "license": "GPL-3.0",
   "engines": {
-    "atom": ">=1.0.0 <2.0.0"
+    "atom": ">=1.0.0"
+  },
+  "scripts": {
+    "build": "babel --delete-dir-on-start --out-dir lib src",
+    "prepare": "npm run build"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.0.0-beta.49",
+    "bluebird": "^3.5.1",
+    "child-process-promise": "^2.2.1",
+    "juice": "^4.2.3",
     "loophole": "^1.1.0",
+    "nodent-runtime": "^3.2.1",
     "nodobjc": "^2.1.0"
   },
   "devDependencies": {
-    "babel-eslint": "^8.1.2",
-    "eslint": "^4.14.0",
-    "eslint-plugin-babel": "^4.1.2"
+    "@babel/cli": "^7.0.0-beta.49",
+    "@babel/core": "^7.0.0-beta.49",
+    "@babel/preset-env": "^7.0.0-beta.49",
+    "@babel/preset-stage-0": "^7.0.0-beta.49",
+    "babel-eslint": "^8.2.3",
+    "babel-plugin-transform-promise-to-bluebird": "^2.0.0-beta.1",
+    "eslint": "^5.0.0-alpha.3",
+    "eslint-plugin-babel": "^5.1.0",
+    "fast-async": "^7.0.6"
   }
 }

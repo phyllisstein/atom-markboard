@@ -1,10 +1,12 @@
-'use babel';
-
 import $ from 'nodobjc';
 import {allowUnsafeNewFunction} from 'loophole';
 import {CompositeDisposable} from 'atom';
-import {execSync} from 'child_process';
+import {exec} from 'child-process-promise';
+import {juiceResources} from 'juice';
 import path from 'path';
+import Promise from 'bluebird';
+
+const juiceAsync = Promise.promisify(juiceResources);
 
 class AtomMarkboard {
   activate() {
@@ -67,7 +69,7 @@ class AtomMarkboard {
     return this.copyWithAtom();
   }
 
-  copyWithPandoc() {
+  async copyWithPandoc() {
     const editor = atom.workspace.getActiveTextEditor();
     if (!editor) return;
     const raw = editor.getText();
@@ -83,19 +85,27 @@ class AtomMarkboard {
 
     let html;
     try {
-      html = execSync(command, {encoding: 'utf8', input: raw});
+      html = await exec(command, {encoding: 'utf8', input: raw});
     } catch (err) {
       atom.notifications.addError('Pandoc Rendering Failed', {description: err.message, stack: err.stack});
       return;
     }
 
-    this.sendToClipboard(html);
+    try {
+      html = await juiceAsync(html);
+    } catch (err) {
+      atom.notifications.addError('HTML Inlining Failed', {description: err.message, stack: err.stack});
+      return;
+    }
+
+    return this.sendToClipboard(html);
   }
 
-  copyWithAtom() {
+  async copyWithAtom() {
     const markdownPreviewPath = atom.packages.resolvePackagePath('markdown-preview');
     const packagePath = path.join(markdownPreviewPath, 'lib', 'renderer');
     const toHTML = require(packagePath).toHTML;
+    const toHTMLAsync = Promise.promisify(toHTML);
 
     const editor = atom.workspace.getActiveTextEditor();
     if (!editor) return;
@@ -104,13 +114,20 @@ class AtomMarkboard {
 
     let html;
     try {
-      html = toHTML(raw, null, null);
+      html = await toHTMLAsync(raw, null, null);
     } catch (err) {
       atom.notifications.addError('Markdown Rendering Failed', {description: err.message, stack: err.stack});
       return;
     }
 
-    this.sendToClipboard(html);
+    try {
+      html = await juiceAsync(html);
+    } catch (err) {
+      atom.notifications.addError('HTML Inlining Failed', {description: err.message, stack: err.stack});
+      return;
+    }
+
+    return this.sendToClipboard(html);
   }
 
   deactivate() {
@@ -118,7 +135,7 @@ class AtomMarkboard {
     this.pool('drain');
   }
 
-  sendToClipboard(html) {
+  async sendToClipboard(html) {
     allowUnsafeNewFunction(() => {
       const string = $(html);
 
