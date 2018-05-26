@@ -1,4 +1,7 @@
 # Changelog
+## v3.1.0
+* Fix crash on closing editor windows in Atom Beta.
+
 ## v3.0.0
 * Now works in Atom Beta :tada:!
 
