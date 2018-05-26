@@ -1,7 +1,7 @@
 {
   "name": "atom-markboard",
   "main": "./lib/atom-markboard",
-  "version": "2.1.17",
+  "version": "3.0.0",
   "description": "Copy Markdown to the OS X Clipboard as fancy formatted text.",
   "keywords": [
     "clipboard",
