@@ -1,3 +1,5 @@
+'use babel';
+
 import $ from 'nodobjc';
 import {allowUnsafeNewFunction} from 'loophole';
 import {CompositeDisposable} from 'atom';
