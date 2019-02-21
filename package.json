@@ -14,11 +14,9 @@
   },
   "dependencies": {
     "bluebird": "^3.5.3",
-    "ffi": "github:node-ffi/node-ffi",
     "juice": "^5.1.0",
     "loophole": "^1.1.0",
-    "nodobjc": "github:dganzella/NodObjC",
-    "ref": "github:TooTallNate/ref"
+    "nodobjc": "github:TooTallNate/nodobjc"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
